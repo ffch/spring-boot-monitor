@@ -17,7 +17,7 @@ Spring boot Admin的ui是真的好看，可是它却令人又爱又恨，Server 
 这时候Spring Boot Monitor这个工具就应运而生，它把Spring boot Admin的界面拿了出来，并修改了数据来源，直接从Actuator拿数据，就是这么简单！对代码无任何侵入！和Spring boot Admin的功能一模一样。
 
 ## [Gitee](https://gitee.com/ffch/SpringBootMonitor)
-## [Github](https://github.com/ffch/SpringBootMonitor)
+## [Github](https://github.com/ffch/spring-boot-monitor)
 ## [Get Started](https://www.pomit.cn/SpringBootMonitor/)
 
 ## 主要功能
