@@ -56,7 +56,7 @@ https://search.maven.org/search?q=spring-boot-monitor ，groupId为cn.pomit。
 
 其他操作则是前端页面操作。和spring-boot-admin完全一样。
 
-## [Get-Started](https://www.pomit.cn/spring-boot-monitor)
+## [Get-Started](https://www.pomit.cn/SpringBootMonitor)
 
 ## 版权声明
 spring-boot-monitor使用 Apache License 2.0 协议.
