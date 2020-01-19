@@ -22,12 +22,16 @@ Spring boot Admin的ui是真的好看，可是它却令人又爱又恨，Server 
 
 ## 主要功能
 
+v0.0.1：
  1. 单机监控SpringBoot应用指标；
  2. 无需额外配置；
  3. 将前端资源归纳到/monitor路径中，隔离其他资源；
  4. 去掉了Spring boot Admin的Server；
  5. 去掉了Spring boot Admin对thymyleaf的依赖；
  6. 去掉了Spring boot Admin的event流。
+
+v0.0.2：
+ 1. 增加events接口，显示journal信息。
 
 ## 使用说明
 
