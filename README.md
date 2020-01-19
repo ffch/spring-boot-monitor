@@ -46,7 +46,7 @@ https://search.maven.org/search?q=spring-boot-monitor ，groupId为cn.pomit。
 <dependency>
 	<groupId>cn.pomit</groupId>
 	<artifactId>spring-boot-monitor</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 </dependency>
 ```
 
