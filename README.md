@@ -34,7 +34,7 @@ Spring boot Admin的ui是真的好看，可是它却令人又爱又恨，Server 
 jar包已经上传到maven中央仓库。
 https://search.maven.org/search?q=spring-boot-monitor ，groupId为cn.pomit。
 
-[使用文档地址](https://www.pomit.cn/spring-boot-monitor)
+[使用文档地址](https://www.pomit.cn/SpringBootMonitor)
 
 ### maven依赖
 
@@ -49,6 +49,13 @@ https://search.maven.org/search?q=spring-boot-monitor ，groupId为cn.pomit。
 ### 启动
 
 引入依赖即可。使用AutoConfiguration自动加载spring-boot-monitor相关配置。
+
+### 配置actuator
+同样，使用actuator还需加上actuator的配置，开放endpoints。
+
+```
+management.endpoints.web.exposure.include=*
+```
 
 ### 访问方式
 
