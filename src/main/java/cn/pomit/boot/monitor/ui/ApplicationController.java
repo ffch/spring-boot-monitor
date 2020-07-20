@@ -94,14 +94,14 @@ public class ApplicationController {
 
 	@ResponseBody
 	@GetMapping(path = "/applications", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-	public List<ServerSentEvent<Application>> applicationsStream(HttpServletRequest request,
+	public List<Application> applicationsStream(HttpServletRequest request,
 			HttpServletResponse response) {
 		initApplicationInfo(request);
-		return Arrays.asList(ServerSentEvent.builder(application).build());
+		return Arrays.asList(application);
 	}
 
 	@ResponseBody
-	@GetMapping(path = "/events", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(path = "instances/events", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<InstanceEvent> events(HttpServletRequest request, HttpServletResponse response) {
 		if (!instanceEventLog.isHasInit()) {
 			return Collections.emptyList();
@@ -110,7 +110,7 @@ public class ApplicationController {
 	}
 
 	@ResponseBody
-	@GetMapping(path = "/events", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+	@GetMapping(path = "instances/events", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
 	public List<ServerSentEvent<InstanceEvent>> eventsStream(HttpServletRequest request, HttpServletResponse response) {
 		if (!instanceEventLog.isHasInit()) {
 			return Collections.emptyList();
