@@ -19,6 +19,7 @@ import org.springframework.boot.actuate.endpoint.web.PathMappedEndpoint;
 import org.springframework.boot.actuate.endpoint.web.WebOperation;
 import org.springframework.http.MediaType;
 import org.springframework.http.codec.ServerSentEvent;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -33,26 +34,39 @@ import cn.pomit.boot.monitor.model.Application;
 import cn.pomit.boot.monitor.model.Endpoints;
 import cn.pomit.boot.monitor.model.Instance;
 import cn.pomit.boot.monitor.model.Registration;
+import cn.pomit.boot.monitor.model.UserInfo;
 
 @RestController
 @RequestMapping("/monitor")
 public class ApplicationController {
+
 	private Collection<? extends ExposableEndpoint<?>> endpoints;
 
 	private Application application;
 
+	private UserInfo userInfo;
+
 	private InstanceEventLog instanceEventLog;
 
 	public ApplicationController(Collection<? extends ExposableEndpoint<?>> endpoints, Application application,
-			InstanceEventLog instanceEventLog) {
+			InstanceEventLog instanceEventLog, UserInfo userInfo) {
 		this.endpoints = endpoints;
 		this.application = application;
 		this.instanceEventLog = instanceEventLog;
+		this.userInfo = userInfo;
 	}
 
 	@ResponseBody
 	@GetMapping(path = "/applications", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Application> applications(HttpServletRequest request, HttpServletResponse response) {
+	public List<Application> applications(@CookieValue(name = "moni_id", required = false) String monitorId,
+			HttpServletRequest request, HttpServletResponse response) {
+		// 不设置用户名密码直接返回成功
+		if (userInfo.getUserName() != null && userInfo.getPassword() != null) {
+			if (monitorId == null || !monitorId.equals(userInfo.getUserNameToken())) {
+				response.setStatus(401);
+				return null;
+			}
+		}
 		initApplicationInfo(request);
 		return Arrays.asList(application);
 	}
@@ -94,8 +108,7 @@ public class ApplicationController {
 
 	@ResponseBody
 	@GetMapping(path = "/applications", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-	public List<Application> applicationsStream(HttpServletRequest request,
-			HttpServletResponse response) {
+	public List<Application> applicationsStream(HttpServletRequest request, HttpServletResponse response) {
 		initApplicationInfo(request);
 		return Arrays.asList(application);
 	}
