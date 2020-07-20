@@ -12,7 +12,7 @@ public class UiController {
 
 	@GetMapping(path = "/monitor", produces = MediaType.TEXT_HTML_VALUE)
 	public String index() {
-		return "redirect:monitor/index.html";
+		return "redirect:/monitor/index.html";
 	}
 
 	@ResponseBody
