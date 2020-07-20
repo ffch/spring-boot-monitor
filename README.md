@@ -32,6 +32,11 @@ v0.0.1：
 
 v0.0.2：
  1. 增加events接口，显示journal信息。
+ 
+v0.0.3：
+ 1. 增加Spring boot admin的多语言支持特性，支持中文。
+ 2. 支持日志文件查看和下载
+ 3. 使用cookie实现简单的登陆控制。
 
 ## 使用说明
 
@@ -46,7 +51,7 @@ https://search.maven.org/search?q=spring-boot-monitor ，groupId为cn.pomit。
 <dependency>
 	<groupId>cn.pomit</groupId>
 	<artifactId>spring-boot-monitor</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 </dependency>
 ```
 
@@ -66,6 +71,27 @@ management.endpoints.web.exposure.include=*
 如果当前的应用地址为http://127.0.0.1:8080, spring-boot-monitor的访问地址为：http://127.0.0.1:8080/monitor。
 
 其他操作则是前端页面操作。和spring-boot-admin完全一样。
+
+### 查看日志
+
+如果要查看日志文件，项目需要增加日志的配置，比如：
+
+```
+logging.file=./log/monitor.log
+logging.pattern.file="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx"
+```
+
+### 登录控制
+
+如果要使用用户名密码进行访问控制，只需要配置参数即可：
+
+```
+spring.boot.monitor.username=cff
+spring.boot.monitor.password=123456
+spring.boot.monitor.salt=pomit
+```
+
+其中，spring.boot.monitor.salt为可选参数，不配做默认值是pomit；spring.boot.monitor.username和spring.boot.monitor.password其中一个不配置，则**默认为不进行访问控制。**
 
 ## [Get-Started](https://www.pomit.cn/SpringBootMonitor)
 
