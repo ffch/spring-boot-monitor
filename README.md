@@ -37,6 +37,9 @@ v0.0.3：
  1. 增加Spring boot admin的多语言支持特性，支持中文。
  2. 支持日志文件查看和下载
  3. 使用cookie实现简单的登陆控制。
+ 
+v0.0.4：
+ 1. 修复logfile不能正常显示问题
 
 ## 使用说明
 
@@ -51,7 +54,7 @@ https://search.maven.org/search?q=spring-boot-monitor ，groupId为cn.pomit。
 <dependency>
 	<groupId>cn.pomit</groupId>
 	<artifactId>spring-boot-monitor</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4</version>
 </dependency>
 ```
 
