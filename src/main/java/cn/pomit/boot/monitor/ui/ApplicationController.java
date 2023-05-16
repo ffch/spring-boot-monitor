@@ -73,7 +73,7 @@ public class ApplicationController {
 
 	/**
 	 * 组装application信息
-	 * 
+	 *
 	 * @param request
 	 */
 	public void initApplicationInfo(HttpServletRequest request) {
@@ -83,7 +83,7 @@ public class ApplicationController {
 			if (endpoint instanceof ExposableWebEndpoint) {
 				collectLinks(links, (ExposableWebEndpoint) endpoint, normalizedUrl);
 			} else if (endpoint instanceof PathMappedEndpoint) {
-				links.put(endpoint.getId(), createLink(normalizedUrl, ((PathMappedEndpoint) endpoint).getRootPath()));
+				links.put(endpoint.getEndpointId().toString(), createLink(normalizedUrl, ((PathMappedEndpoint) endpoint).getRootPath()));
 			}
 		}
 		Endpoints endpoints = new Endpoints(links);
